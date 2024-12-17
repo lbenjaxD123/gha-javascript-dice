@@ -12,7 +12,8 @@ jobs:
       # Paso 1: Revisar el código
       - name: Check out repository
         uses: actions/checkout@v4
-
+        with:
+          token: ${{ secrets.TOKEN_TO_PUSH }}
       # Paso 2: Configurar Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -37,8 +38,8 @@ jobs:
           git add dist/
           git commit -m "Build and publish action"
           git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_TO_PUSH }}
+        # env:
+        #   GITHUB_TOKEN: ${{ secrets.TOKEN_TO_PUSH }}
 
       # (Opcional) Paso 6: Crear un nuevo tag (si es necesario)
       # - name: Create Tag and Push
