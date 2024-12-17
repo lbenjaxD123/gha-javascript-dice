@@ -36,10 +36,15 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@users.noreply.github.com"
+          
+      - name: Push if actor is not a bot
+        if: ${{ github.actor != 'github-actions' }}
+        run: |
           git add dist/
           git commit -m "Build and publish action"
           git push
-        # env:
+
+        # env
         #   GITHUB_TOKEN: ${{ secrets.TOKEN_TO_PUSH }}
 
       # (Opcional) Paso 6: Crear un nuevo tag (si es necesario)
