@@ -1,0 +1,49 @@
+name: Build and Publish Action
+
+on:
+  push:
+    branches:
+      - main # O la rama en la que quieras que se ejecute el workflow
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Paso 1: Revisar el código
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      # Paso 2: Configurar Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18" # Cambia la versión de Node.js si es necesario
+
+      # Paso 3: Instalar dependencias
+      - name: Install dependencies
+        run: |
+          npm install
+
+      # Paso 4: Compilar la acción usando ncc (o tu herramienta preferida)
+      - name: Build action
+        run: |
+          npx ncc build index.js --license license.txt
+
+      # Paso 5: Subir el archivo dist a tu repositorio
+      - name: Commit and push dist files
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@users.noreply.github.com"
+          git add dist/
+          git commit -m "Build and publish action"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # (Opcional) Paso 6: Crear un nuevo tag (si es necesario)
+      # - name: Create Tag and Push
+      #   run: |
+      #     git tag -a v1 -m "Release version 1"
+      #     git push origin v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
