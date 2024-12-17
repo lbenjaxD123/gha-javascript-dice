@@ -38,7 +38,7 @@ jobs:
           git commit -m "Build and publish action"
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN_TO_PUSH }}
 
       # (Opcional) Paso 6: Crear un nuevo tag (si es necesario)
       # - name: Create Tag and Push
