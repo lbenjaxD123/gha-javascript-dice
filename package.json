@@ -1,0 +1,28 @@
+{
+  "name": "gha-javascript-dice",
+  "version": "1.0.0",
+  "description": "Action con javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx ncc build index.js --license license.txt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lbenjaxD123/gha-javascript-dice.git"
+  },
+  "keywords": [],
+  "author": "Benjamin Bello",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lbenjaxD123/gha-javascript-dice/issues"
+  },
+  "homepage": "https://github.com/lbenjaxD123/gha-javascript-dice#readme",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.3"
+  }
+}

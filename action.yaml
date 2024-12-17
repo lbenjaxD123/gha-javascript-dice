@@ -1,0 +1,17 @@
+name: Acción compuesta - tirada de dados
+description: "Acción de tirada de dados"
+inputs:
+  numero-dados:
+    required: true
+    default: "dos"
+    description: "El número de dados que se van a tirar. Valores aceptados: [uno, dos]"
+# No hay value en los outputs
+outputs:
+  dado1:
+    description: "El valor del primer dado"
+  dado2:
+    description: "El valor del segundo dado"
+runs:
+  using: node20
+  main: 'dist/index.js'
+# Ya no hay steps
