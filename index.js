@@ -13,7 +13,7 @@ try {
 
     const numeroDados = core.getInput('numero-dados');
     core.notice(`Numero de dados: ${numeroDados}`);
-    core.notice("Prueba...");
+    core.notice("Prueba2...");
     core.setOutput('dado1', tiradaDado());
     if (numeroDados == 2) {
         core.setOutput('dado2', tiradaDado());
